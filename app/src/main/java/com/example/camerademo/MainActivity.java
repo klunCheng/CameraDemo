@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.ContentResolver;
@@ -19,6 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.camerademo.databinding.ActivityMainBinding;
+import com.example.camerademo.tools.Permission;
 
 import java.io.FileNotFoundException;
 
@@ -46,7 +46,15 @@ public class MainActivity extends AppCompatActivity {
         binding.btnCarema.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                askCameraPermissions();
+                if(Permission.askCameraPermissions(MainActivity.this,CAMERA_REQUEST_CODE)==false){
+                    // 表示未有權限
+                    // 要求使用者給予權限 (第三個參數 自定義的請求代碼)
+                    ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CAMERA},CAMERA_PERM_CODE);
+                    //Log.e("context的permission", String.valueOf(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)));
+                    //Log.e("PackageManager的permission", String.valueOf(PackageManager.PERMISSION_GRANTED));
+                }
+                else
+                    openCamera();
             }
         });
     //open Photos
@@ -59,11 +67,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intentToG,GALLERY_REQUEST_CODE);
             }
         });
+        binding.btnToX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intenttoX = new Intent(MainActivity.this,CameraXActivity.class);
+                startActivity(intenttoX);
+            }
+        });
 
 
     }
 
-    private void askCameraPermissions() {
+    /*private void askCameraPermissions() {
         //檢查有沒有跟使用者要權限
         //如果使用者「同意權限」PERMISSION_GRANTED、「拒絕權限」PERMISSION_DENIED
 
@@ -78,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             openCamera();
         }
 
-    }
+    }*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
