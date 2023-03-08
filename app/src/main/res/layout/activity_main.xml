@@ -8,40 +8,38 @@
 
     <ImageView
         android:id="@+id/image_photo"
-        android:layout_width="320dp"
-        android:layout_height="250dp"
+        android:layout_width="333dp"
+        android:layout_height="412dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.26" />
 
     <Button
         android:id="@+id/btn_carema"
         android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="104dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="36dp"
         android:text="拍照"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_photo" />
+        app:layout_constraintTop_toBottomOf="@+id/image_photo"
+        app:layout_constraintVertical_bias="0.093" />
 
     <Button
         android:id="@+id/btn_gallery"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginEnd="84dp"
         android:text="相簿"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_carema"
         app:layout_constraintTop_toTopOf="@+id/btn_carema" />
 
     <Button
@@ -54,5 +52,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="由舊版Camera API製作"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/image_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
